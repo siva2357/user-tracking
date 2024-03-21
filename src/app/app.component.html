@@ -22,11 +22,11 @@
       </map-marker>
 
       <!-- Info window content -->
-      <map-info-window *ngIf="selectedMarkerInfo" >
-        <strong>Name: </strong>{{ selectedMarkerInfo.name }}<br>
-        <strong>City:</strong> {{ selectedMarkerInfo.city }}<br>
-        <strong>Status:</strong> {{ selectedMarkerInfo.status }}<br>
-        <strong>Timestamp:</strong> {{ selectedMarkerInfo.status === 'Active' ? selectedMarkerInfo.timestamp : selectedMarkerInfo.lastActiveTimestamp }}<br>
+      <map-info-window >
+        <strong>Name: </strong>{{ selectedMarkerInfo?.name }}<br>
+        <strong>City:</strong> {{ selectedMarkerInfo?.city }}<br>
+        <strong>Status:</strong> {{ selectedMarkerInfo?.status }}<br>
+        <strong>Timestamp:</strong> {{ selectedMarkerInfo?.status === 'Active' ? selectedMarkerInfo?.timestamp : selectedMarkerInfo?.lastActiveTimestamp }}<br>
         <strong>Status:</strong> Active <span class="status-circle active"></span> / Inactive <span class="status-circle inactive"></span>
       </map-info-window>
     </google-map>

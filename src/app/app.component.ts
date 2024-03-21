@@ -13,7 +13,10 @@ export class AppComponent implements OnInit {
   filteredMarkers: Marker[] = [];
   selectedMarkerInfo: Marker | null = null;
   selectedMarkerPosition: google.maps.LatLngLiteral | undefined;
-  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow | undefined;
+  
+  @ViewChild(MapInfoWindow, { static: true }) 
+  infoWindow!: MapInfoWindow;
+
   infoWindowOpen: boolean = false; // Track whether the info window is open
 
   constructor() {}
@@ -58,21 +61,22 @@ export class AppComponent implements OnInit {
   }
 
   openInfoWindow(markerRef: MapMarker, marker: Marker) {
-    if (!this.infoWindow) {
-      console.error('Info window is undefined.');
-      return;
-    }
+    console.log(markerRef, marker);
+    // if (!this.infoWindow) {
+    //   console.error('Info window is undefined.');
+    //   return;
+    // }
   
-    if (!markerRef) {
-      console.error('Marker reference is undefined.');
-      return;
-    }
+    // if (!markerRef) {
+    //   console.error('Marker reference is undefined.');
+    //   return;
+    // }
   
     // Log user details to the console
     console.log('User details:', marker);
   
     // Close the info window if it's already open
-    if (this.selectedMarkerInfo === marker) {
+    if (this.selectedMarkerInfo?.id === marker.id) {
       this.infoWindow.close();
       this.selectedMarkerInfo = null;
       this.selectedMarkerPosition = undefined;
